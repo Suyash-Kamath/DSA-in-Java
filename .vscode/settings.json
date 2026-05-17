@@ -1,5 +1,6 @@
 {
     "java.project.sourcePaths": [
-        "arrays"
+        "arrays",
+        "binary_search"
     ]
 }
