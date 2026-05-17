@@ -1,5 +1,12 @@
-public class BubbleSort {
+// “Keep comparing adjacent elements and push bigger elements toward the end.”
+// “Let the largest element bubble up to its correct position.”
 
+// That’s why it is called Bubble Sort.
+
+// Large elements slowly rise like bubbles in water.
+
+public class BubbleSort {
+// T.C is O(n^2)
 
     static void bubbleSort(int []arr){
         int n = arr.length;
