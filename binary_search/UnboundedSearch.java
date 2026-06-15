@@ -1,3 +1,21 @@
+
+public class UnboundedSearch {
+
+    public static void main(String[] args) {
+
+        int[] nums = {1, 3, 5, 7, 9, 11, 13, 15, 17};
+
+        InfiniteArray arr = new InfiniteArray(nums);
+
+        Solution sol = new Solution();
+
+        System.out.println(sol.unboundedSearch(arr, 9));   // 4
+        System.out.println(sol.unboundedSearch(arr, 13));  // 6
+        System.out.println(sol.unboundedSearch(arr, 8));   // -1
+    }
+}
+
+
 class InfiniteArray {
 
     private int[] arr;
@@ -47,21 +65,5 @@ class Solution {
         }
 
         return -1;
-    }
-}
-
-public class UnBoundedSearch {
-
-    public static void main(String[] args) {
-
-        int[] nums = {1, 3, 5, 7, 9, 11, 13, 15, 17};
-
-        InfiniteArray arr = new InfiniteArray(nums);
-
-        Solution sol = new Solution();
-
-        System.out.println(sol.unboundedSearch(arr, 9));   // 4
-        System.out.println(sol.unboundedSearch(arr, 13));  // 6
-        System.out.println(sol.unboundedSearch(arr, 8));   // -1
     }
 }

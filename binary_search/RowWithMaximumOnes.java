@@ -1,8 +1,8 @@
 public class RowWithMaximumOnes{
     static int firstOccurrence(int [][]matrix,int rowIndex){
-        int totalRow = matrix.length;
+        // int totalRow = matrix.length;
         int totalColumn = matrix[0].length;
-        int target = 1;
+        // int target = 1;
         int ans =-1;
         // handling case where there is no 1 inside the row 
         // sorted array hai , rightmost element dekho naa
