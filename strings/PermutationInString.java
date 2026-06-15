@@ -1,3 +1,5 @@
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
 
 public class PermutationInString {
     
@@ -54,7 +56,10 @@ public class PermutationInString {
               char newChar = s2.charAt(i);
               int newCharIndex = newChar-'a';
               count2[newCharIndex]++;
+              
+              // old character ki index jo mujhe sliding window se remove karna hai 
               int oldCharIndex = i-windowLength;
+              // iss character se kuch chize mapped hai , if I know the character then only , table me se -- karlu
               char oldChar = s2.charAt(oldCharIndex);
               int freqTableIndexofOldChar = oldChar-'a';
               count2[freqTableIndexofOldChar]--;
@@ -78,3 +83,5 @@ public class PermutationInString {
         System.out.println(ans);
     }
 }
+
+// O(n+m)  is the T.C 
