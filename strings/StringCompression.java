@@ -45,4 +45,4 @@ public class StringCompression {
     }
 }
 
-// O(N) is Time complexity and O(N) space complexity 
+// O(N) is Time complexity and O(1) space complexity 
