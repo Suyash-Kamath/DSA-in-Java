@@ -27,6 +27,8 @@ public class PartitionEqualSubsetSum{
         for(int num:nums){
             sum+=num;
         }
+
+        if((sum&1)==1) return false;
         
         int index =0;
         int target = sum/2;
