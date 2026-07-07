@@ -11,7 +11,7 @@ public class MinimizeTheDifferenceBetweenTargetAndChosenElement {
 
         int mini = Integer.MAX_VALUE ;
 
-        // row index pe khada hu where multiple columns pe value padi and ahr ek column ko bar bar consider karunga and bar bar answer ka min leta rahunga
+        // row index pe khada hu where multiple columns pe value padi and har ek column ko bar bar consider karunga and bar bar answer ka min leta rahunga
 
         for(int num:mat[row]){
            int ans = solve(sum+num, target, mat, row+1);
