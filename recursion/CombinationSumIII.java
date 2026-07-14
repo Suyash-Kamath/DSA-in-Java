@@ -87,6 +87,106 @@
 
 
 
+// import java.util.ArrayList;
+// import java.util.List;
+
+// public class CombinationSumIII {
+
+//     static void solve(int[] candidates,
+//                       int target,
+//                       int k,
+//                       int index,
+//                       List<List<Integer>> ans,
+//                       List<Integer> output) {
+
+//         // Target achieved
+//         if (target == 0 && output.size() == k) {
+//             ans.add(new ArrayList<>(output));
+//             return;
+//         }
+
+//         // Invalid cases
+//         if (index >= candidates.length) {
+//             return;
+//         }
+
+//         if (target < 0) {
+//             return;
+//         }
+
+//         if (output.size() > k) {
+//             return;
+//         }
+
+//         // --------------------------------
+//         // Choice 1 : Take current number
+//         // --------------------------------
+
+//         output.add(candidates[index]);
+
+//         // Move to next index because
+//         // every number can be used only once
+//         solve(
+//                 candidates,
+//                 target - candidates[index],
+//                 k,
+//                 index + 1,
+//                 ans,
+//                 output
+//         );
+
+//         // Backtrack
+//         output.remove(output.size() - 1);
+
+//         // --------------------------------
+//         // Choice 2 : Skip current number
+//         // --------------------------------
+
+//         solve(
+//                 candidates,
+//                 target,
+//                 k,
+//                 index + 1,
+//                 ans,
+//                 output
+//         );
+//     }
+
+//     static List<List<Integer>> combinationSumIII(int k, int target) {
+
+//         int[] candidates = {
+//                 1,2,3,4,5,6,7,8,9
+//         };
+
+//         List<List<Integer>> ans = new ArrayList<>();
+//         List<Integer> output = new ArrayList<>();
+
+//         solve(
+//                 candidates,
+//                 target,
+//                 k,
+//                 0,
+//                 ans,
+//                 output
+//         );
+
+//         return ans;
+//     }
+
+//     public static void main(String[] args) {
+
+//         int k = 3;
+//         int target = 9;
+
+//         List<List<Integer>> ans = combinationSumIII(k, target);
+
+//         for (List<Integer> combination : ans) {
+//             System.out.println(combination);
+//         }
+//     }
+// }
+
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -95,41 +195,41 @@ public class CombinationSumIII {
     static void solve(int[] candidates,
                       int target,
                       int k,
+                      int count,
                       int index,
                       List<List<Integer>> ans,
                       List<Integer> output) {
 
-        // Target achieved
-        if (target == 0 && output.size() == k) {
+        // Found a valid combination
+        if (target == 0 && count == k) {
             ans.add(new ArrayList<>(output));
             return;
         }
 
         // Invalid cases
-        if (index >= candidates.length) {
-            return;
-        }
-
         if (target < 0) {
             return;
         }
 
-        if (output.size() > k) {
+        if (count > k) {
+            return;
+        }
+
+        if (index >= candidates.length) {
             return;
         }
 
         // --------------------------------
-        // Choice 1 : Take current number
+        // Choice 1 : Take current element
         // --------------------------------
 
         output.add(candidates[index]);
 
-        // Move to next index because
-        // every number can be used only once
         solve(
                 candidates,
                 target - candidates[index],
                 k,
+                count + 1,
                 index + 1,
                 ans,
                 output
@@ -139,13 +239,14 @@ public class CombinationSumIII {
         output.remove(output.size() - 1);
 
         // --------------------------------
-        // Choice 2 : Skip current number
+        // Choice 2 : Skip current element
         // --------------------------------
 
         solve(
                 candidates,
                 target,
                 k,
+                count,
                 index + 1,
                 ans,
                 output
@@ -165,7 +266,8 @@ public class CombinationSumIII {
                 candidates,
                 target,
                 k,
-                0,
+                0,      // count
+                0,      // index
                 ans,
                 output
         );
