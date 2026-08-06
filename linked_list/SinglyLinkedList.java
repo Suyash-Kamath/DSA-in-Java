@@ -131,6 +131,32 @@ public class SinglyLinkedList {
         size=0;
     }
 
+    public boolean search(int data){
+        Node current = head;
+        while(current!=null){
+            if(current.data==data){
+                return true;
+
+            }
+            current = current.next;
+        }
+        return false;
+    }
+
+    public int findPosition(int data){
+        Node current = head;
+        int position = 1;
+        while(current!=null){
+            if(current.data==data){
+                return position;
+            }
+            current = current.next;
+            position++;
+        }
+        return -1; // Data not found
+    }
+    
+
   
 
 
@@ -168,6 +194,9 @@ public class SinglyLinkedList {
         System.out.println("Size of linked list = "+list.getSize());
         System.out.println("Head of linked list = "+list.getHead());
         System.out.println("Tail of linked list = "+list.getTail());
+        System.out.println("Searching for 100 in linked list = "+list.search(100));
+        System.out.println("Position of 100 in linked list = "+list.findPosition(10000));
+        System.out.println("Position of 100 in linked list = "+list.findPosition(100));
 
     }
     
