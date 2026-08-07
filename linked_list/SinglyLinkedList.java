@@ -156,9 +156,141 @@ public class SinglyLinkedList {
         return -1; // Data not found
     }
     
+    
+    public void updateAtPosition(int data,int position){
+        
+       
+        Node temp = head;
+        
+        if(position<1 || position>size+1){
+            System.out.println("Invalid Position");
+            return ;
+        }
+        for(int i=1;i<position;i++){
+            temp=temp.next;
+        }
+            temp.data = data;
+    }
+    // Update the first occurrence of oldValue with newValue in the linked list
+    public boolean updateValue(int oldValue,int newValue){
 
-  
+        Node current = head;
+        while(current!=null){
+            if(current.data==oldValue){
+                current.data = newValue;
+                return true; // Exit after updating the first occurrence
+            }
+            current = current.next;
+        }
+        return false;
 
+    }
+    
+
+    public void deleteHead(){
+       
+        if(head==null){
+            System.out.println("The List is empty");
+           
+            return ;
+        }
+        head = head.next;
+        size--;
+        if(head==null){
+            tail = null; // If the list becomes empty, update tail to null
+        }
+        
+
+    }
+
+    public void deleteTail(){
+       
+        if(tail==null){
+            System.out.println("The List is empty ");
+            return ;
+        }
+        if(head==tail){
+            head = null;
+            tail = null;
+            size=0;
+            return ;
+        }
+
+        Node current = head;
+        while(current.next!=tail){
+            current = current.next;
+        }
+        current.next = null;
+        tail = current;
+        size--;
+
+    }
+
+    public void deleteAtPosition(int position){
+        if(position<1 || position > size+1){
+            System.out.println("Invalid Position");
+            return ;
+        }
+        if(position==1){
+            deleteHead();
+            return ;
+        }
+        if(position==size){
+            deleteTail();
+            return ;
+        }
+
+        Node previous = head;
+        for(int i=1;i<position-1;i++){
+            previous = previous.next;
+        }
+        Node current = previous.next;
+        Node forward = current.next;
+
+        previous.next = forward;
+        current.next = null; // Help garbage collection
+        size--;
+       
+    }
+
+
+public boolean deleteValue(int value) {
+
+    if (head == null) {
+        System.out.println("The List is empty");
+        return false;
+    }
+
+    if (head.data == value) {
+        deleteHead();
+        return true;
+    }
+
+    Node previous = head;
+    Node current = head.next;
+
+    while (current != null) {
+
+        if (current.data == value) {
+
+            previous.next = current.next;
+
+            if (current == tail) {
+                tail = previous;
+            }
+
+            current.next = null; // Help garbage collection
+            size--;
+
+            return true;
+        }
+
+        previous = current;
+        current = current.next;
+    }
+
+    return false;
+}
 
     public static void main(String[] args) {
        SinglyLinkedList list = new SinglyLinkedList(); // empty linked list
@@ -197,9 +329,33 @@ public class SinglyLinkedList {
         System.out.println("Searching for 100 in linked list = "+list.search(100));
         System.out.println("Position of 100 in linked list = "+list.findPosition(10000));
         System.out.println("Position of 100 in linked list = "+list.findPosition(100));
+        list.updateAtPosition(900,3);
+        list.print();
+        System.out.println("Updating value 100 to 500 in linked list or not  = "+list.updateValue(100,500));
+        list.print();
+
+        list.deleteHead();
+        list.print();
+
+        list.deleteHead();
+        list.print();
+
+        list.deleteHead();
+        list.print();
+
+        list.deleteTail();
+        list.print();
+
+        list.deleteAtPosition(3);
+        list.print();
+
+        list.deleteAtPosition(1);
+        list.print();
+
+        list.deleteValue(120);
+        list.print();
 
     }
     
 }
-
-
+ 
