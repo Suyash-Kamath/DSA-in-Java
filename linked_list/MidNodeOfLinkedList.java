@@ -5,9 +5,17 @@ public class MidNodeOfLinkedList {
         ListNode slow = head;
         ListNode fast = head;
 
-        while (fast != null && fast.next != null) {
+        // while (fast != null && fast.next != null) {
+        //     slow = slow.next;
+        //     fast = fast.next.next;
+        // }
+
+        while(fast!=null){
+            fast=fast.next;
+            if(fast!=null){
+                fast=fast.next;
+            }
             slow = slow.next;
-            fast = fast.next.next;
         }
 
         return slow;
