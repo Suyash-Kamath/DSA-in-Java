@@ -196,7 +196,7 @@ public class CircularDoublyLinkedList {
         } else {
             // walk directly to the target node; prev pointer gives us the predecessor for free
             Node currNode = head;
-            for (int i = 1; i < position; i++) {
+            for (int i = 1; i < position-1; i++) {
                 currNode = currNode.next;
             }
             Node prevNode = currNode.prev;
