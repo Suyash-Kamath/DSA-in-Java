@@ -10,44 +10,14 @@ public class DeepCopyLinkedListWithRandomPointerUsingInterleavingMethod {
         }
     }
 
-    /*
-        Step 1:
-        Clone nodes and interleave them.
-
-        Old:
-        1 -> 2 -> 3
-
-        After interleaving:
-        1 -> 1' -> 2 -> 2' -> 3 -> 3'
-
-
-        Step 2:
-        Copy random pointers.
-
-        Observation:
-
-        oldNode.random = old 7
-
-        oldNode.random.next = cloned 7
-
-        Therefore:
-
-        newNode.random = oldNode.random.next
-
-
-        Step 3:
-        Detach original and cloned lists.
-    */
-
     static Node copyRandomList(Node head) {
 
         if (head == null) {
             return null;
         }
 
-
         // ==================================================
-        // STEP 1: Interleave cloned nodes
+        // STEP 1: Create clone nodes and interleave
         // ==================================================
 
         Node temp = head;
@@ -56,28 +26,17 @@ public class DeepCopyLinkedListWithRandomPointerUsingInterleavingMethod {
 
             Node cloneNode = new Node(temp.val);
 
-            // clone points to old next
             cloneNode.next = temp.next;
-
-            // old node points to clone
             temp.next = cloneNode;
 
-            // move to next original node
             temp = cloneNode.next;
         }
 
-
         /*
-            Example:
+            After step 1:
 
-            Before:
-
-            1 -> 2 -> 3 -> 4
-
-
-            After Step 1:
-
-            1 -> 1' -> 2 -> 2' -> 3 -> 3' -> 4 -> 4'
+            7 -> 7' -> 13 -> 13' -> 11 -> 11'
+              -> 10 -> 10' -> 1 -> 1'
         */
 
 
@@ -92,59 +51,37 @@ public class DeepCopyLinkedListWithRandomPointerUsingInterleavingMethod {
             Node oldNode = temp;
             Node newNode = temp.next;
 
-
-            /*
-                Suppose:
-
-                oldNode.random ---> old 7
-
-
-                Since cloned 7 is immediately after old 7:
-
-                oldNode.random.next ---> cloned 7
-
-
-                Therefore:
-            */
-
             if (oldNode.random != null) {
                 newNode.random = oldNode.random.next;
             }
 
-
-            // move to next ORIGINAL node
             temp = newNode.next;
         }
 
 
         // ==================================================
-        // STEP 3: Detach both lists
+        // STEP 3: Detach original and cloned list
         // ==================================================
 
-        temp = head;
-
         Node ansListHead = head.next;
+
+        temp = head;
 
         while (temp != null) {
 
             Node oldNode = temp;
             Node cloneNode = temp.next;
 
-
-            // Restore original list
+            // restore original list
             oldNode.next = cloneNode.next;
 
-
-            // Connect cloned list
+            // connect cloned list
             if (cloneNode.next != null) {
                 cloneNode.next = cloneNode.next.next;
             }
 
-
-            // Move to next original node
             temp = oldNode.next;
         }
-
 
         return ansListHead;
     }
@@ -157,14 +94,14 @@ public class DeepCopyLinkedListWithRandomPointerUsingInterleavingMethod {
         while (temp != null) {
 
             System.out.print(
-                    "Node: " + temp.val +
-                    ", Random: "
+                    "Node = " + temp.val +
+                    ", Random = "
             );
 
-            if (temp.random != null) {
-                System.out.println(temp.random.val);
-            } else {
+            if (temp.random == null) {
                 System.out.println("null");
+            } else {
+                System.out.println(temp.random.val);
             }
 
             temp = temp.next;
@@ -174,43 +111,63 @@ public class DeepCopyLinkedListWithRandomPointerUsingInterleavingMethod {
 
     public static void main(String[] args) {
 
-        /*
-            1 -> 2 -> 3 -> 4
+        // ============================================
+        // CREATE NODES FROM YOUR DIAGRAM
+        // ============================================
 
-            Random:
-            1 -> 3
-            2 -> 1
-            3 -> 4
-            4 -> 2
-        */
-
+        Node n7 = new Node(7);
+        Node n13 = new Node(13);
+        Node n11 = new Node(11);
+        Node n10 = new Node(10);
         Node n1 = new Node(1);
-        Node n2 = new Node(2);
-        Node n3 = new Node(3);
-        Node n4 = new Node(4);
-
-        // next pointers
-        n1.next = n2;
-        n2.next = n3;
-        n3.next = n4;
 
 
-        // random pointers
-        n1.random = n3;
-        n2.random = n1;
-        n3.random = n4;
-        n4.random = n2;
+        // ============================================
+        // NEXT POINTERS
+        //
+        // 7 -> 13 -> 11 -> 10 -> 1 -> null
+        // ============================================
+
+        n7.next = n13;
+        n13.next = n11;
+        n11.next = n10;
+        n10.next = n1;
 
 
-        Node copiedHead = copyRandomList(n1);
+        // ============================================
+        // RANDOM POINTERS
+        // ============================================
+
+        n7.random = null;
+
+        // 13 -> 7
+        n13.random = n7;
+
+        // 11 -> 1
+        n11.random = n1;
+
+        // 10 -> 11
+        n10.random = n11;
+
+        // 1 -> 7
+        n1.random = n7;
 
 
-        System.out.println("Original list:");
-        printList(n1);
+        Node head = n7;
 
-        System.out.println();
 
-        System.out.println("Copied list:");
+        System.out.println("Original List:");
+        printList(head);
+
+
+        // Deep Copy
+        Node copiedHead = copyRandomList(head);
+
+
+        System.out.println("\nOriginal List after copying:");
+        printList(head);
+
+        System.out.println("\nDeep Copied List:");
         printList(copiedHead);
     }
 }
