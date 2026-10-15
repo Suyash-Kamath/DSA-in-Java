@@ -1,4 +1,4 @@
-
+// stack can be implemented using LinkedList
 
 import java.util.*;
 
@@ -66,6 +66,12 @@ public class IntroductionToStackUsingArray {
             if(top==-1) return true;
             else return false;
         }
+        public void display(){
+            while(!this.checkEmpty()){
+                System.out.println(this.peek());
+                this.pop();
+            }
+        }
     }
     public static void main(String[] args) {
 
@@ -81,6 +87,7 @@ public class IntroductionToStackUsingArray {
         stack.push(30);
          System.out.println("Size: " + stack.getSize());
         System.out.println("Top element: " + stack.peek());
+      /*
         stack.push(40);
         System.out.println("Size: " + stack.getSize());
         System.out.println("Top element: " + stack.peek());
@@ -104,6 +111,10 @@ public class IntroductionToStackUsingArray {
         
        
         System.out.println("Capacity: " + stack.getCapacity());
+
+        */
+
+        stack.display();
         
     }
 }
