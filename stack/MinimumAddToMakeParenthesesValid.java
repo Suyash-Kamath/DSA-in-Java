@@ -64,6 +64,8 @@ public class MinimumAddToMakeParenthesesValid {
     }
 }
 
+open -> number of open brackets in imaginary stack 
+addition ->number of extra open brackets needed to make the string valid
 */
 
 // t.c and s.c is O(N)
