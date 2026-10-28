@@ -54,7 +54,7 @@ public class DailyTemperaturesMonotonicStackPattern {
 
 import java.util.*;
 
-public class DailyTemperatures {
+public class DailyTemperaturesMonotonicStackPattern {
 
     public static int[] dailyTemperatures(int[] temperatures) {
         int n = temperatures.length;
