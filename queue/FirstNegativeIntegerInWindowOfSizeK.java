@@ -48,7 +48,7 @@ public class FirstNegativeIntegerInWindowOfSizeK {
         // step2 : process remainging windows
         for(int i=k;i<arr.length;i++){
             // remove the irrelevant elements
-            if(!dq.isEmpty() && dq.peekFirst()<=i-k){
+            while(!dq.isEmpty() && dq.peekFirst()<=i-k){
                 dq.pollFirst();
             }
 
