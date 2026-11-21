@@ -1,3 +1,11 @@
+// Collection framework is a simple tool jiske dwara jo bhi DS hai unko replicate kar sakte ho via code .
+
+/*
+
+Collection which is a interface which List a sub interfaces extends and ArrayList implements the List interface. Collection framework is a unified architecture for representing and manipulating collections. It includes interfaces, implementations, and algorithms that provide a standard way to handle groups of objects.
+
+*/
+
 // import java.util.*;
 
 import java.util.ArrayList;
@@ -56,6 +64,8 @@ public class Main {
             // iterator is an interface that provides a way to iterate over a collection of elements. It allows us to traverse the elements of a collection one by one, without exposing the underlying implementation details of the collection. The Iterator interface provides methods for checking if there are more elements to iterate over, retrieving the next element, and removing elements from the collection.
 
             // I want to traverse the list using iterator
+            // Aapko specific data structure ke elements ko traverse karna hai, to aap iterator ka use kar sakte ho. Iterator interface ke methods ka use karke aap elements ko traverse kar sakte ho. Iterator interface ke methods me hasNext() aur next() methods ka use karke aap elements ko traverse kar sakte ho.
+            // Aapko specific class type ka iterator create karna padega , uss particular object keliye .
             Iterator<Integer> it = list.iterator();
             // hasNext returns bollean value ,  if there is element or not. If there is element it returns true otherwise false.
             while(it.hasNext()) {
