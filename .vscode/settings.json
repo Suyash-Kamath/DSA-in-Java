@@ -1,10 +1,11 @@
 {
   "java.project.sourcePaths": [
+    "strings",
     "sorting_algorithms",
+    "recursion",
+    "linked_list",
     "binary_search",
     "arrays",
-    "strings",
-    "recursion",
-    "linked_list"
+    "collection_framework"
   ]
 }
