@@ -92,6 +92,13 @@ public class Main {
             // contains method is used to check if a list contains a specific element. It takes an object as an argument and returns true if the list contains the specified element, and false otherwise.
             System.out.println("Does List 3 contain 100? " + list3.contains(100));
             System.out.println("Does List 3 contain 11? " + list3.contains(11));
+
+
+            // Methods of array list 
+
+            // sort
+            
+
     
     }
 }
