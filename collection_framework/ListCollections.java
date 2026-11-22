@@ -9,12 +9,12 @@ Collection which is a interface which List a sub interfaces extends and ArrayLis
 // import java.util.*;
 
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Arrays;
 
-public class Main {
+public class ListCollections {
     public static void main(String[] args) {
         // List or Collection Framework in Java is a unified architecture for representing and manipulating collections. It includes interfaces, implementations, and algorithms that provide a standard way to handle groups of objects.
         // these are interfaces that define the behavior of different types of collections, such as List, Set, and Map. Implementations are concrete classes that provide specific implementations of these interfaces, such as ArrayList, HashSet, and HashMap. Algorithms are methods that perform operations on collections, such as sorting and searching.
@@ -97,7 +97,33 @@ public class Main {
             // Methods of array list 
 
             // sort
+
+            list.add(12);
+            list.add(6);
+            System.out.println("Printing List before sort: " + list);
+            Collections.sort(list);
+            System.out.println("Printing List after sort: " + list);
+
+            // sort in descending order
+            Collections.sort(list, Collections.reverseOrder());
+            System.out.println("Printing List after sort in descending order: " + list);
+
+            // clone method is used to create a shallow copy of the list.
+            // shallow copy means that the elements themselves are not copied, only the references to the elements are copied. This means that if the elements are mutable objects, changes made to the elements in one list will be reflected in the other list.
+
+            ArrayList<Integer> newList = (ArrayList<Integer>) list.clone();
+            System.out.println("Printing newList: " + newList);
+
+            // ensure Capacity method is used to ensure that the list has enough capacity to hold a specified number of elements. It takes an integer as an argument and increases the capacity of the list if necessary. This method is useful when we know in advance how many elements we will be adding to the list, as it can help to avoid unnecessary resizing of the list.
+            ArrayList<Integer> marks = new ArrayList<>();
+            marks.ensureCapacity(10);
             
+            // isEmpty method is used to check if a list is empty. It returns true if the list contains no elements, and false otherwise.
+            System.out.println("Is marks list empty? " + marks.isEmpty());
+
+            // index of method is used to find the index of the first occurrence of a specified element in the list. It takes an object as an argument and returns the index of the first occurrence of the specified element, or -1 if the element is not found in the list.
+            System.out.println("Index of 12 in list: " + list.indexOf(12));
+            System.out.println("Index of 100 in list: " + list.indexOf(100));
 
     
     }
